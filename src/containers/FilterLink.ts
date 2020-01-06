@@ -4,7 +4,7 @@ import Link from '../components/Link'
 import { Dispatch } from 'react'
 import { RootState } from './index'
 import TodoFilters from '../constants/TodoFilters'
-import { ActionMessage } from '../constants/ActionTypes'
+import { ActionMessage } from "../constants/ActionMessage"
 
 export interface LinkProps{
   filter: TodoFilters;

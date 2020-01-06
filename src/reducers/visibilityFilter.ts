@@ -1,4 +1,5 @@
-import { SET_VISIBILITY_FILTER, ActionMessage } from '../constants/ActionTypes'
+import { SET_VISIBILITY_FILTER } from '../constants/ActionTypes'
+import { ActionMessage } from "../constants/ActionMessage";
 import TodoFilters from '../constants/TodoFilters'
 
 const { SHOW_ALL }=TodoFilters;

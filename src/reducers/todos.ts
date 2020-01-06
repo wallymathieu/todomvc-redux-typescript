@@ -4,9 +4,8 @@ import {
   EDIT_TODO,
   COMPLETE_TODO,
   COMPLETE_ALL_TODOS,
-  CLEAR_COMPLETED,
-  ActionMessage
-} from '../constants/ActionTypes'
+  CLEAR_COMPLETED} from '../constants/ActionTypes'
+import { ActionMessage } from "../constants/ActionMessage"
 import { Todo } from '../models/Todo'
 
 const initialState:Todo[] = [
