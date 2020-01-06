@@ -8,8 +8,11 @@ export interface TodoTextInputProps{
   editing?: boolean;
   newTodo?: boolean;
 }
+interface TodoTextInputState{
+  text: string;
+}
 
-export default class TodoTextInput extends PureComponent<TodoTextInputProps> {
+export default class TodoTextInput extends PureComponent<TodoTextInputProps,TodoTextInputState> {
   static propTypes = {
     onSave: PropTypes.func.isRequired,
     text: PropTypes.string,

@@ -9,7 +9,10 @@ export interface TodoItemProps{
   completeTodo(id:number):void;
   todo:Todo
 }
-export default class TodoItem extends PureComponent<TodoItemProps> {
+interface TodoItemState{
+  editing:boolean;
+}
+export default class TodoItem extends PureComponent<TodoItemProps,TodoItemState> {
   static propTypes = {
     todo: PropTypes.object.isRequired,
     editTodo: PropTypes.func.isRequired,
