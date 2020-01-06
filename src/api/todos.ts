@@ -5,7 +5,7 @@ export function loadTodos() {
     // Types of actions to emit before and after
     types: ['LOAD_TODO_REQUEST', 'LOAD_TODO_SUCCESS', 'LOAD_TODO_FAILURE'],
     // Check the cache (optional):
-    shouldCallAPI: (state:RootState) => true, //!state.loadedTodos,
+    shouldCallAPI: (_state:RootState) => true, //!state.loadedTodos,
     // Perform the fetching:
     callAPI: () => fetch(`api/todos`),
     // Arguments to inject in begin/end actions
@@ -18,7 +18,7 @@ export function editTodo(id:number, text:string) {
     // Types of actions to emit before and after
     types: ['PUT_TODO_REQUEST', 'PUT_TODO_SUCCESS', 'PUT_TODO_FAILURE'],
     // Check the cache (optional):
-    shouldCallAPI: (state:RootState) => true, //!state.loadedTodos,
+    shouldCallAPI: (_state:RootState) => true, //!state.loadedTodos,
     // Perform the fetching:
     callAPI: () => fetch(`api/todos/${id}`, {
       method: 'PUT',
@@ -38,7 +38,7 @@ export function addTodo(text:string) {
     // Types of actions to emit before and after
     types: ['POST_TODO_REQUEST', 'POST_TODO_SUCCESS', 'POST_TODO_FAILURE'],
     // Check the cache (optional):
-    shouldCallAPI: (state:RootState) => true, //!state.loadedTodos,
+    shouldCallAPI: (_state:RootState) => true, //!state.loadedTodos,
     // Perform the fetching:
     callAPI: () => fetch(`api/todos`, {
       method: 'POST',
@@ -53,22 +53,21 @@ export function addTodo(text:string) {
   }
 }
 
-export function removeTodo(text:string) {
+export function removeTodo(id:number) {
   return {
     // Types of actions to emit before and after
     types: ['DELETE_TODO_REQUEST', 'DELETE_TODO_SUCCESS', 'DELETE_TODO_FAILURE'],
     // Check the cache (optional):
-    shouldCallAPI: (state:RootState) => true, //!state.loadedTodos,
+    shouldCallAPI: (_state:RootState) => true, //!state.loadedTodos,
     // Perform the fetching:
-    callAPI: () => fetch(`api/todos`, {
+    callAPI: () => fetch(`api/todos/${id}`, {
       method: 'DELETE',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({text})
+      }
     }),
     // Arguments to inject in begin/end actions
-    payload: { text }
+    payload: { id }
   }
 }
