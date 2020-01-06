@@ -7,7 +7,7 @@ import {
   CLEAR_COMPLETED,
   ActionMessage
 } from '../constants/ActionTypes'
-import { Todo } from '../Todo'
+import { Todo } from '../models/Todo'
 
 const initialState:Todo[] = [
   {

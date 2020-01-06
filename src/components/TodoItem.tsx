@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import TodoTextInput from './TodoTextInput'
-import { Todo } from '../Todo'
+import { Todo } from '../models/Todo'
 export interface TodoItemProps{
   deleteTodo(id:number):void;
   editTodo(id:number,text:string):void;

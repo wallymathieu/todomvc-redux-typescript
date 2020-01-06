@@ -1,5 +1,5 @@
 import TodoFilters from "../constants/TodoFilters";
-import { Todo } from "../Todo";
+import { Todo } from "../models/Todo";
 
 export interface RootState{
   todos: Todo[];
