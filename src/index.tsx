@@ -1,12 +1,13 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { createStore, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 import App from './components/App'
 import reducer from './reducers'
 import 'todomvc-app-css/index.css'
 import thunk from 'redux-thunk';
-const store = createStore(reducer,applyMiddleware(thunk))
+import { callAPIMiddleware } from './middlewares/callapimiddleware'
+const store = createStore(reducer,applyMiddleware(compose(thunk,callAPIMiddleware)))
 
 render(
   <Provider store={store}>
