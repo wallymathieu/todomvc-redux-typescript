@@ -1,5 +1,6 @@
 import todos from './todos'
 import * as types from '../constants/ActionTypes'
+import { ActionMessage } from '../constants/ActionMessage'
 
 describe('todos reducer', () => {
   it('should handle initial state', () => {
@@ -251,7 +252,7 @@ describe('todos reducer', () => {
   })
 
   it('should not generate duplicate ids after CLEAR_COMPLETED', () => {
-    const messages:types.ActionMessage[] =[
+    const messages:ActionMessage[] =[
       {
         type: types.COMPLETE_TODO,
         id: 0
