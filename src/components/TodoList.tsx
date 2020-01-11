@@ -5,7 +5,7 @@ import * as TodoActions from '../actions'
 
 
 const TodoList: React.FunctionComponent<TodoListProps> = ({ loadTodos,filteredTodos, actions }:TodoListProps) => {
-  React.useEffect(loadTodos,[loadTodos]);
+  React.useEffect(()=>{loadTodos()},[loadTodos]);
   return (  <ul className="todo-list">
     {filteredTodos.map(todo =>
       <TodoItem key={todo.id} todo={todo} {...actions} />
