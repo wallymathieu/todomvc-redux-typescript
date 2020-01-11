@@ -1,4 +1,5 @@
 import TodoFilters from "./TodoFilters";
+import { Todo } from "../models/Todo";
 export type ActionMessage = {
   type: 'ADD_TODO';
   text: string;
@@ -21,4 +22,18 @@ export type ActionMessage = {
   filter: TodoFilters;
 } | {
   type: 'NONE';
+} | {
+  type: 'RESET_ERROR_MESSAGE';
+} | {
+  type: 'DELETE_TODO_SUCCESS';
+  payload: {id: number;}
+} | {
+  type: 'POST_TODO_SUCCESS';
+  payload: {id: number;text:string}
+} | {
+  type: 'PUT_TODO_SUCCESS';
+  payload: {text:string}
+} | {
+  type: 'LOAD_TODO_SUCCESS';
+  json: Todo[];
 };

@@ -17,6 +17,6 @@ const Header:React.FunctionComponent<HeaderProps> = ({ addTodo }:HeaderProps) =>
 )
 
 export interface HeaderProps{
-  addTodo:{(text:string):void}
+  addTodo(text:string):void
 }
 export default Header

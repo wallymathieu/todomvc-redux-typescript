@@ -4,7 +4,8 @@ import {
   EDIT_TODO,
   COMPLETE_TODO,
   COMPLETE_ALL_TODOS,
-  CLEAR_COMPLETED} from '../constants/ActionTypes'
+  CLEAR_COMPLETED,
+  LOAD_TODO_SUCCESS} from '../constants/ActionTypes'
 import { ActionMessage } from "../constants/ActionMessage"
 import { Todo } from '../models/Todo'
 
@@ -15,9 +16,17 @@ const initialState:Todo[] = [
     id: 0
   }
 ]
+export default function todoApiResults(state = initialState, action:ActionMessage){
+  switch (action?.type) {
+    case LOAD_TODO_SUCCESS:
+      return action.json;
+    default:
+      return todos(state, action)
+  }
+}
 
-export default function todos(state = initialState, action:ActionMessage) {
-  switch (action.type) {
+export function todos(state = initialState, action:ActionMessage) {
+  switch (action?.type) {
     case ADD_TODO:
       return [
         ...state,

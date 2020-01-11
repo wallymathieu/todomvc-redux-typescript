@@ -7,7 +7,11 @@ export function loadTodos() {
     // Check the cache (optional):
     shouldCallAPI: (_state:RootState) => true, //!state.loadedTodos,
     // Perform the fetching:
-    callAPI: () => fetch(`api/todos`),
+    callAPI: () => fetch(`api/todos/`,{
+      headers: {
+        'Accept': 'application/json',
+      }
+    }),
     // Arguments to inject in begin/end actions
     payload: { }
   }
@@ -40,7 +44,7 @@ export function addTodo(text:string) {
     // Check the cache (optional):
     shouldCallAPI: (_state:RootState) => true, //!state.loadedTodos,
     // Perform the fetching:
-    callAPI: () => fetch(`api/todos`, {
+    callAPI: () => fetch(`api/todos/`, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',

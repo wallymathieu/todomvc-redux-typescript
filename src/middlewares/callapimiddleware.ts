@@ -30,20 +30,23 @@ export function callAPIMiddleware({ dispatch, getState }:{dispatch:Dispatch<Acti
       })
     )
     return callAPI().then(
-      (response:any) =>
-        dispatch(
+      (response:any) =>{
+        return response.json();
+      }).then((body:any)=>{
+        return dispatch(
           Object.assign({}, payload, {
-            response,
+            json: body,
             type: successType
           })
-        ),
-      (error:any) =>
+        )
+      }).catch((error:any) =>{
+        console.error(error);
         dispatch(
           Object.assign({}, payload, {
             error,
             type: failureType
           })
         )
-    )
+        })
   }
 }
