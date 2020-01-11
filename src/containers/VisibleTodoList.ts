@@ -12,8 +12,7 @@ const mapStateToProps = (state:RootState) => ({
 const mapDispatchToProps = (dispatch:Dispatch<AnyAction>) =>{
   const actions = bindActionCreators(TodoActions, dispatch);
   return {
-    actions: actions,
-    loadTodos: actions.loadTodos
+    actions: actions
   }
 }
 

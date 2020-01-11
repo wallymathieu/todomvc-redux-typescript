@@ -1,10 +1,9 @@
 import React from 'react'
 import TodoItem from './TodoItem'
 import { Todo } from '../models/Todo'
-import * as TodoActions from '../actions'
 
-
-const TodoList: React.FunctionComponent<TodoListProps> = ({ loadTodos,filteredTodos, actions }:TodoListProps) => {
+const TodoList: React.FunctionComponent<TodoListProps> = ({ filteredTodos, actions }:TodoListProps) => {
+  const loadTodos=actions.loadTodos;
   React.useEffect(()=>{loadTodos()},[loadTodos]);
   return (  <ul className="todo-list">
     {filteredTodos.map(todo =>
@@ -16,8 +15,7 @@ const TodoList: React.FunctionComponent<TodoListProps> = ({ loadTodos,filteredTo
 
 export interface TodoListProps{
   filteredTodos:Todo[],
-  actions:typeof TodoActions,
-  loadTodos():void
+  actions:any
 }
 
 export default TodoList

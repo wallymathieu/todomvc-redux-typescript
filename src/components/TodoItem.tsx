@@ -6,7 +6,7 @@ import { Todo } from '../models/Todo'
 export interface TodoItemProps{
   deleteTodo(id:number):void;
   editTodo(id:number,text:string):void;
-  completeTodo(id:number):void;
+  completeTodo(id:number,completed:boolean):void;
   todo:Todo
 }
 interface TodoItemState{
@@ -53,7 +53,7 @@ export default class TodoItem extends PureComponent<TodoItemProps,TodoItemState>
           <input className="toggle"
                  type="checkbox"
                  checked={todo.completed}
-                 onChange={() => completeTodo(todo.id)} />
+                 onChange={() => completeTodo(todo.id, !todo.completed)} />
           <label onDoubleClick={this.handleDoubleClick}>
             {todo.text}
           </label>
