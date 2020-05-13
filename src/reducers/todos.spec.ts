@@ -157,7 +157,8 @@ describe('todos reducer', () => {
         }
       ], {
         type: types.COMPLETE_TODO,
-        id: 1
+        id: 1,
+        completed: true,
       })
     ).toEqual([
       {
@@ -255,7 +256,8 @@ describe('todos reducer', () => {
     const messages:ActionMessage[] =[
       {
         type: types.COMPLETE_TODO,
-        id: 0
+        id: 0,
+        completed: true,
       }, {
         type: types.CLEAR_COMPLETED
       }, {

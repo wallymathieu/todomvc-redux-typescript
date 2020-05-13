@@ -9,9 +9,12 @@ const mapStateToProps = (state:RootState) => ({
   filteredTodos: getVisibleTodos(state)
 })
 
-const mapDispatchToProps = (dispatch:Dispatch<AnyAction>) => ({
-  actions: bindActionCreators(TodoActions, dispatch)
-})
+const mapDispatchToProps = (dispatch:Dispatch<AnyAction>) =>{
+  const actions = bindActionCreators(TodoActions, dispatch);
+  return {
+    actions: actions
+  }
+}
 
 const VisibleTodoList = connect(
   mapStateToProps,
