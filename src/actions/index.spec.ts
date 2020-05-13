@@ -25,9 +25,10 @@ describe('todo actions', () => {
   })
 
   it('completeTodo should create COMPLETE_TODO action', () => {
-    expect(actions.completeTodo(1)).toEqual({
+    expect(actions.completeTodo(1,false)).toEqual({
       type: types.COMPLETE_TODO,
-      id: 1
+      id: 1,
+      completed: false,
     })
   })
 

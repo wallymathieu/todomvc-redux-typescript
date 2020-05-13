@@ -1,6 +1,7 @@
 import React from 'react'
 import TodoItem from './TodoItem'
 import { Todo } from '../models/Todo'
+import { ActionTypes } from '../actions/types'
 
 const TodoList: React.FunctionComponent<TodoListProps> = ({ filteredTodos, actions }:TodoListProps) => {
   const loadTodos=actions.loadTodos;
@@ -15,7 +16,7 @@ const TodoList: React.FunctionComponent<TodoListProps> = ({ filteredTodos, actio
 
 export interface TodoListProps{
   filteredTodos:Todo[],
-  actions:any
+  actions:ActionTypes
 }
 
 export default TodoList

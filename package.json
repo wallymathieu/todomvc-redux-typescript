@@ -24,6 +24,7 @@
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0",
     "todomvc-app-css": "^2.2.0",
+    "typesafe-actions": "^5.1.0",
     "typescript": "^3.7.4"
   },
   "scripts": {
