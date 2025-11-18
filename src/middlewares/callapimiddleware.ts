@@ -12,9 +12,9 @@ export interface ApiActionMessage {
   json: boolean;
 }
 
-export const callAPIMiddleware: Middleware<{}, RootState> =
-  (api: MiddlewareAPI<Dispatch<AnyAction>, RootState>) =>
-  (next: Dispatch<AnyAction>) =>
+export const callAPIMiddleware: Middleware =
+  (api: MiddlewareAPI) =>
+  (next) =>
   (action: any) => {
     if (!action.types) {
       // Normal action: pass it on
