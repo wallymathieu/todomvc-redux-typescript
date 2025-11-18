@@ -1,5 +1,5 @@
 import React from 'react'
-import { createRenderer } from 'react-test-renderer/shallow';
+import { createRenderer } from 'react-shallow-renderer';
 import TodoTextInput, { TodoTextInputProps } from './TodoTextInput'
 
 const setup = (propOverrides?:Partial<TodoTextInputProps>) => {

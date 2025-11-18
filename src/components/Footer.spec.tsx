@@ -1,5 +1,5 @@
 import React from 'react'
-import { createRenderer } from 'react-test-renderer/shallow';
+import { createRenderer } from 'react-shallow-renderer';
 import Footer, { FooterProps } from './Footer'
 import FilterLink from '../containers/FilterLink'
 import TodoFilters from '../constants/TodoFilters'

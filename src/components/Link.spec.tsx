@@ -1,5 +1,5 @@
 import React from 'react'
-import { createRenderer } from 'react-test-renderer/shallow';
+import { createRenderer } from 'react-shallow-renderer';
 import Link, { LinkProps } from './Link'
 
 const setup = (propOverrides?:Partial<LinkProps>) => {
