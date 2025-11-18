@@ -3,7 +3,6 @@ import classnames from 'classnames'
 
 const Link:React.FunctionComponent<LinkProps> = ({ active, children, setFilter }:LinkProps) =>
   (
-    // eslint-disable-next-line jsx-a11y/anchor-is-valid
     <a
       className={classnames({ selected: active })}
       style={{ cursor: 'pointer' }}

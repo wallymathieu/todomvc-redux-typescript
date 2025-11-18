@@ -1,56 +1,60 @@
-import { Dispatch } from 'react'
-import { ActionMessage } from "../constants/ActionMessage"
-import { RootState } from '../containers'
-import { AnyAction } from 'redux'
+import { AnyAction, Dispatch, Middleware, MiddlewareAPI } from 'redux';
+import { RootState } from '../containers';
+
 /* API action */
-export interface ApiActionMessage{
+export interface ApiActionMessage {
   // Types of actions to emit before and after
-  types:[string,string,string];
+  types: [string, string, string];
   // API request parameters:
-  callAPI:[RequestInfo,RequestInit];
+  callAPI: [RequestInfo, RequestInit];
   // Arguments to inject in begin/end actions
   payload: any;
-  json:boolean;
+  json: boolean;
 }
 
-export function callAPIMiddleware({ dispatch }:{dispatch:Dispatch<ActionMessage>, getState:()=>RootState}) {
-  return (next:(Dispatch<AnyAction>)) => (action:ApiActionMessage) => {
-    const { types, callAPI, payload = {}, json } = action
-    if (!types) {
+export const callAPIMiddleware: Middleware =
+  (api: MiddlewareAPI) =>
+  (next) =>
+  (action: any) => {
+    if (!action.types) {
       // Normal action: pass it on
-      return next(action as any)
+      return next(action);
     }
+
+    const { types, callAPI, payload = {}, json }: ApiActionMessage = action;
+
     if (
       !Array.isArray(types) ||
       types.length !== 3 ||
-      !types.every(type => typeof type === 'string')
+      !types.every((type) => typeof type === 'string')
     ) {
-      throw new Error('Expected an array of three string types.')
-    }   
-    const [requestType, successType, failureType] = types
-    dispatch(
+      throw new Error('Expected an array of three string types.');
+    }
+    const [requestType, successType, failureType] = types;
+    api.dispatch(
       Object.assign({}, payload, {
-        type: requestType
+        type: requestType,
       })
-    )
-    return fetch(callAPI[0],callAPI[1]).then(
-      (response:Response) =>{
-        return json ? response.json(): undefined;
-      }).then((body:any)=>{
-        return dispatch(
+    );
+    return fetch(callAPI[0], callAPI[1])
+      .then((response: Response) => {
+        return json ? response.json() : undefined;
+      })
+      .then((body: any) => {
+        return api.dispatch(
           Object.assign({}, payload, {
             json: body,
-            type: successType
+            type: successType,
           })
-        )
-      }).catch((error:any) =>{
+        );
+      })
+      .catch((error: any) => {
         console.error(error);
-        dispatch(
+        api.dispatch(
           Object.assign({}, payload, {
             error,
-            type: failureType
+            type: failureType,
           })
-        )
-        })
-  }
-}
+        );
+      });
+  };
